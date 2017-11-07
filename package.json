@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
-    "body-parser": "^1.18.2",
     "clarifai": "^2.4.0",
     "express": "^4.16.2",
     "request": "^2.83.0"

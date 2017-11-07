@@ -25,37 +25,37 @@ app.post('/getTags', function(req, res){
 });
 
 app.post('/trackSearch',function(req,res){
-    console.log(req.body);
-    var authOptions = {
-      url: 'https://accounts.spotify.com/api/token',
-      headers: {
-        'Authorization': 'Basic '+(new Buffer('appId:appSecret').toString('base64'))
-      },
-      form: {
-        grant_type: 'client_credentials'
-      },
-      json: true
-    };
+  var auth64 = new Buffer('ClientID:ClientSecret').toString('base64');
+  var authOptions = {
+    url: 'https://accounts.spotify.com/api/token',
+    headers: {
+      'Authorization': 'Basic '+ auth64
+    },
+    form: {
+      grant_type: 'client_credentials'
+    },
+    json: true
+  };
 
-    request.post(authOptions,function(err,response,body){
-        if(!err){
-            var token = body.access_token;
-            var searchOptions = {
-                url: 'https://api.spotify.com/v1/search?q='+req.body.trackName+'&type=track',
-                headers:{
-                    'Authorization': 'Bearer '+token
-                },
-                json: true
-            };
+  request.post(authOptions,function(err,response,body){
+      if(!err){
+          var token = body.access_token;
+          var searchOptions = {
+              url: 'https://api.spotify.com/v1/search?q='+req.body.trackName+'&type=track',
+              headers:{
+                  'Authorization': 'Bearer ' + token
+              },
+              json: true
+          };
 
-            request.get(searchOptions,function(error,searchResponse,searchBody){
-                if(!error){
-                    res.send(searchBody);
-                }
-            })
-        }
-    })
-})
+          request.get(searchOptions,function(error, searchResponse, searchBody){
+              if(!error){
+                  res.send(searchBody);
+              }
+          });
+      }
+  });
+});
 
 app.listen(1337, function(){
   console.log('listening on port: 1337');
