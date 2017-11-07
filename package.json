@@ -1,0 +1,25 @@
+{
+  "name": "api-workshop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "clarifai": "^2.4.0",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FultonG/API-Workshop.git"
+  },
+  "author": "Fulton Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FultonG/API-Workshop/issues"
+  },
+  "homepage": "https://github.com/FultonG/API-Workshop#readme"
+}
